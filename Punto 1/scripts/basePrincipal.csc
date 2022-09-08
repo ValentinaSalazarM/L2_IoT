@@ -1,27 +1,23 @@
 vec basesSectoriales 5
 atget id id
 
+wait 3000
 data mens "basePrincipal" id
 send mens
 
 loop
 
 read resp
-rdata resp tipo Bid valor
+rdata resp tipo Bid total
 dec Bid
 
 if(tipo=="numParqueaderos")
-	vset valor basesSectoriales Bid
+	vset total basesSectoriales Bid
 end	
 
 if(tipo=="cambioCupos")
 	vset valor basesSectoriales Pid 
-	cprint "Cupos Base Sectorial " + Pid ": " valor
-end
-
-if((tipo=="entradaParqueadero") || (tipo=="salidaParqueadero"))
-	dec Pid
-	vset valor cupos Pid 
-	data mens "cambioCupos" Pid valor
-	send mens idBase
+	conc strTemp "Cupos de base sectorial " Pid
+	conc strTemp strTemp ": "
+	conc strTemp strTemp total
 end
