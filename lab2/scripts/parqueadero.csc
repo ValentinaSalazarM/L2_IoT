@@ -1,5 +1,5 @@
 atget id id
-set cupos id
+set cupos 1
 atnd actuales
 set baseSect -1
 
