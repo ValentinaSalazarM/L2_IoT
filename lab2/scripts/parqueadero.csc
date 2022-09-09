@@ -4,7 +4,6 @@ atnd actuales
 set baseSect -1
 
 loop
-wait 1000
 atnd nuevos
 read mens
 rdata mens tipo Bid 

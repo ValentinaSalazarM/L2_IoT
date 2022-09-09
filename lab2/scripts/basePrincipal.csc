@@ -1,13 +1,14 @@
 atnd numBases basesSectoriales
 atget id id
 
-wait 3000
+wait 30000
 data mens "basePrincipal" id
 send mens
 
 vec cuposBase numBases
 
 for i 0 numBases
+	cprint i
 	vset -1 cuposBase i
 end
 
@@ -15,7 +16,6 @@ loop
 
 read resp
 rdata resp tipo Bid total
-dec Bid
 
 if(tipo=="numParqueaderos")
 	for i 0 numBases

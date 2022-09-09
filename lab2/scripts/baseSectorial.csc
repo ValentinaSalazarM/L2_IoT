@@ -1,14 +1,13 @@
 atget id id
 
 set idBase -1
-set numParq
+set numParq 0
 
 atnd numTemp idsParq
-
-
 vec cuposParq numTemp
 
 for i 0 numTemp
+	cprint i
 	vset -1 cuposParq i
 end
 
@@ -16,6 +15,7 @@ data mens "cupos" id
 send mens
 
 loop
+wait 100
 read resp
 rdata resp tipo Pid valor
 
