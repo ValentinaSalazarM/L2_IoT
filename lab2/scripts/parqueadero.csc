@@ -2,10 +2,11 @@ atget id id
 set cupos 1
 set actuales 1
 set baseSect -1
-
 loop
-wait 1000
+dreadsensor actividad
 atnd nuevos
+
+wait 1000
 read mens
 rdata mens tipo Bid 
 
@@ -17,7 +18,7 @@ if (baseSect==-1)
 	end
 end
 if (baseSect!=-1)
-	if nuevos != 1
+	if actividad == 1
 		cprint "Nuevos " nuevos 
 		cprint "Actuales " actuales
 		if nuevos > actuales
