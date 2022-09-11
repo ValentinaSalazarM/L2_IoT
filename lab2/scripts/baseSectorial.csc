@@ -24,11 +24,12 @@ if(tipo=="basePrincipal")
 	set idBase Pid
 	set total 0
 	for i 0 numTemp
-		vget temp idsParq i
+		vget temp cuposParq i
 		if(temp!=-1)
 			plus total total temp
 		end
 	end
+	print "Cupos de base sectorial " total
 	data mens "numParqueaderos" id total
 	send mens idBase
 end	
@@ -43,20 +44,19 @@ if(tipo=="cupos")
 	end
 
 end
-if((tipo=="entradaParqueadero") || (tipo=="salidaParqueadero"))
+if(tipo=="cambioParqueadero")
+	set total 0
 	for i 0 numTemp
 		vget tempId idsParq i
 		if(tempId==Pid)
 			vset valor cuposParq i
-		end 		
-	end
-	set total 0
-	for i 0 numTemp
-		vget temp idsParq i
+		end 
+		vget temp cuposParq i
 		if(temp!=-1)
 			plus total total temp
-		end
+		end		
 	end
+	print "Cupos de base sectorial " total
 	data mens "cambioCupos" id total 
 	send mens idBase
 end

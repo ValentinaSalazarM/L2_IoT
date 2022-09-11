@@ -18,20 +18,28 @@ read resp
 rdata resp tipo Bid total
 
 if(tipo=="numParqueaderos")
+	set valor 0
 	for i 0 numBases
 		vget tempId basesSectoriales i
 		if(tempId==Bid)
 			vset total cuposBase i
-		end 		
+			cprint "base " total
+		end
+		vget temp cuposBase i
+		plus valor valor temp
 	end
+	print "Numero de parqueaderos disponibles " valor
 end	
 
 if(tipo=="cambioCupos")
+	set valor 0
 	for i 0 numBases
 		vget tempId basesSectoriales i
 		if(tempId==Bid)
 			vset total cuposBase i
-		end 		
+		end 
+		vget temp cuposBase i
+		plus valor valor temp		
 	end
-	cprint "Cupos de base sectorial " total
+	print "Numero de parqueaderos disponibles " valor
 end

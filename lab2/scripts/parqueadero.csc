@@ -1,6 +1,6 @@
 atget id id
 set cupos 1
-set actuales 1
+set first 0
 set baseSect -1
 loop
 dreadsensor actividad
@@ -19,21 +19,21 @@ if (baseSect==-1)
 end
 if (baseSect!=-1)
 	if actividad == 1
-		cprint "Nuevos " nuevos 
-		cprint "Actuales " actuales
-		if nuevos > actuales
-			set diff nuevos-actuales
-			set cupos cupos-diff
-			data mens "entradaParqueadero" id cupos
+		if first == 0
+			set cupos cupos-1
+			set first 1
+			data mens "cambioParqueadero" id cupos
 			send mens baseSect
 		end
-		if nuevos < actuales
-			set diff actuales-nuevos
-			set cupos cupos-diff
-			data mens "salidaParqueadero" id cupos
+		print "Ocupado"
+	else
+		if first != 0
+			set cupos cupos+1
+			set first 0
+			data mens "cambioParqueadero" id cupos
 			send mens baseSect
 		end
-		set actuales nuevos
+		print "Libre"
 	end
 end
 
