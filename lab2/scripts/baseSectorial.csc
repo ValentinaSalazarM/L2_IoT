@@ -7,7 +7,6 @@ atnd numTemp idsParq
 vec cuposParq numTemp
 
 for i 0 numTemp
-	cprint i
 	vset -1 cuposParq i
 end
 
@@ -15,11 +14,13 @@ data mens "cupos" id
 send mens
 
 loop
-wait 100
+wait 1000
 read resp
 rdata resp tipo Pid valor
 
 if(tipo=="basePrincipal")
+	cprint "sec: base principal"
+	cprint numTemp
 	set idBase Pid
 	set total 0
 	for i 0 numTemp
@@ -37,6 +38,7 @@ if(tipo=="cupos")
 		vget tempId idsParq i
 		if(tempId==Pid)
 			vset valor cuposParq i
+			cprint "parqueadero " valor
 		end 		
 	end
 

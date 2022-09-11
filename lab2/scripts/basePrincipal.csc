@@ -1,7 +1,7 @@
 atnd numBases basesSectoriales
 atget id id
 
-wait 30000
+delay 5000
 data mens "basePrincipal" id
 send mens
 
@@ -13,7 +13,7 @@ for i 0 numBases
 end
 
 loop
-
+wait 1000
 read resp
 rdata resp tipo Bid total
 
@@ -33,7 +33,5 @@ if(tipo=="cambioCupos")
 			vset total cuposBase i
 		end 		
 	end
-	conc strTemp "Cupos de base sectorial " Bid
-	conc strTemp strTemp ": "
-	conc strTemp strTemp total
+	cprint "Cupos de base sectorial " total
 end

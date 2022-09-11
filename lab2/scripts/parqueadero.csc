@@ -1,9 +1,10 @@
 atget id id
 set cupos 1
-atnd actuales
+set actuales 1
 set baseSect -1
 
 loop
+wait 1000
 atnd nuevos
 read mens
 rdata mens tipo Bid 
@@ -16,7 +17,9 @@ if (baseSect==-1)
 	end
 end
 if (baseSect!=-1)
-	if nuevos > 0
+	if nuevos != 1
+		cprint "Nuevos " nuevos 
+		cprint "Actuales " actuales
 		if nuevos > actuales
 			set diff nuevos-actuales
 			set cupos cupos-diff
@@ -29,6 +32,7 @@ if (baseSect!=-1)
 			data mens "salidaParqueadero" id cupos
 			send mens baseSect
 		end
+		set actuales nuevos
 	end
 end
 
