@@ -19,8 +19,6 @@ read resp
 rdata resp tipo Pid valor
 
 if(tipo=="basePrincipal")
-	cprint "sec: base principal"
-	cprint numTemp
 	set idBase Pid
 	set total 0
 	for i 0 numTemp
@@ -39,7 +37,6 @@ if(tipo=="cupos")
 		vget tempId idsParq i
 		if(tempId==Pid)
 			vset valor cuposParq i
-			cprint "parqueadero " valor
 		end 		
 	end
 

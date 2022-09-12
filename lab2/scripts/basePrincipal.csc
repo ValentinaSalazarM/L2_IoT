@@ -8,7 +8,6 @@ send mens
 vec cuposBase numBases
 
 for i 0 numBases
-	cprint i
 	vset -1 cuposBase i
 end
 
@@ -23,7 +22,6 @@ if(tipo=="numParqueaderos")
 		vget tempId basesSectoriales i
 		if(tempId==Bid)
 			vset total cuposBase i
-			cprint "base " total
 		end
 		vget temp cuposBase i
 		plus valor valor temp
@@ -41,5 +39,5 @@ if(tipo=="cambioCupos")
 		vget temp cuposBase i
 		plus valor valor temp		
 	end
-	print "Numero de parqueaderos disponibles " valor
+	print "Número de parqueaderos disponibles " valor
 end
